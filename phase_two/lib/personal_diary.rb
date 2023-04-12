@@ -1,3 +1,4 @@
 def make_snippet(sentence)
-  sentence.split(" ").size <= 5 ? sentence : sentence.split(" ").take(5).join(" ") + "..."
+  first_five_words_ellipsis = sentence.split(" ").take(5).join(" ") + "..."
+  sentence.split(" ").size <= 5 ? sentence : first_five_words_ellipsis
 end
