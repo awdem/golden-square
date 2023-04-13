@@ -13,21 +13,13 @@ I want to see an estimate of reading time for a text, assuming that I can read 2
 _Include the name of the method, its parameters, return value, and side effects._
 
 ```ruby
-# EXAMPLE
-
-# `extract_upper` extracts uppercase words from a string
-uppercase_words = extract_uppercase(mixed_words)
-
-mixed_words: a string (e.g. "hello WORLD")
-uppercase_words: a list of strings (e.g. ["WORLD"])
-
-# The method doesn't print anything or have any other side-effects
-
 # 'time_to_read' returns a time to read a given text assuming a read-ing rate
 reading_time = time_to_read(text)
 
-reading_time: a string(eg "0.5 minutes")
-text: a string(eg "this is a book")
+* reading_time: a string containing the estimated reading time (eg "0.5 minutes")
+* text: a string containing words
+
+# The method doesn't have any other side effects
 
 ```
 
@@ -39,16 +31,6 @@ text: a string(eg "this is a book")
 _Make a list of examples of what the method will take and return._
 
 ```ruby
-# EXAMPLE
-
-extract_uppercase("hello WORLD") => ["WORLD"]
-extract_uppercase("HELLO WORLD") => ["HELLO", "WORLD"]
-extract_uppercase("hello world") => []
-extract_uppercase("hello WoRLD") => []
-extract_uppercase("hello WORLD!") => ["WORLD"]
-extract_uppercase("") => []
-extract_uppercase(nil) throws an error
-
 
 time_to_read("this book") => "0.01 minutes"
 time_to_read("") => "0 minutes"
