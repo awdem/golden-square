@@ -17,4 +17,4 @@ RSpec.describe "time_to_read" do
       expect(time_to_read("hello hi hello hi hello hi hello hi hi hello hello hi hello hi hello hi hello hi hi hello")).to eq "0.1 minutes"
     end
   end  
-end
+endf
