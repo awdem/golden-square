@@ -42,7 +42,7 @@ class DiaryEntry
 
   def reading_chunk(wpm, minutes)
     readable_words = wpm * minutes 
-    @chunk = [] if @chunk.size < readable_words
+    @chunk = [] if @chunk.size <= readable_words
     if @chunk.empty?
       @chunk = words[0, readable_words]
       return @chunk.join(" ")

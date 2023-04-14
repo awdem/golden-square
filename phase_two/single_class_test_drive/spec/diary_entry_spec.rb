@@ -105,6 +105,16 @@ RSpec.describe DiaryEntry do
       # what if it ends exactly on the word count.
       # does it fail if wpm is 0
     end
+
+    context "given a text where the chunk size divides text size evenly" do
+      it "resets the chunk once full contents has been read" do
+        entry = DiaryEntry.new("day one", ("one two three four"))
+        entry.reading_chunk(2, 1)
+        entry.reading_chunk(2, 1)
+        chunk = entry.reading_chunk(2, 1)
+        expect(chunk).to eq ("one two")
+      end
+    end
   end
 
 end
