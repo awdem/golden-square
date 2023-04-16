@@ -35,6 +35,10 @@ class TodoList
     #if @todo_list is empty, returns a string telling user list is empty
   end
 
+  def complete(todo) #todo is a string contained in @todo_list
+  #returns nothing
+  end
+
 end
 ```
 
@@ -56,14 +60,42 @@ todo_list.see_list # => "- Walk the dog"
 todo_list = TodoList.new
 todo_list.add_todo('Walk the dog')
 todo_list.add_todo('Go to the shop')
-todo_list.see_list # => "- Walk the dog\n- Go to the shop\n "
+todo_list.see_list # => "- Walk the dog\n- Go to the shop"
 
-#  4 - task is an empty string
+#  4 - todo is an empty string
 todo_list = TodoList.new
 todo_list.add_todo('')  # => "fails with "No text in todo!"
 
+# 5 - add then remove a todo from list with complete
+
+todo_list = TodoList.new
+todo_list.add_todo('Walk the dog')
+todo_list.complete('Walk the dog')
+todo_list.see_list # => "list is empty!"
+
+# 6 - removes a todo from a multiline list while maintaining format
+
+todo_list = TodoList.new
+todo_list.add_todo('Walk the dog')
+todo_list.add_todo('Make lunch')
+todo_list.add_todo('Go to the shop')
+todo_list.complete('Make lunch')
+todo_list.see_list # => "- Walk the dog\n- Go to the shop"
+
+# 7 - complete fails with empty string
+
+todo_list = TodoList.new
+todo_list.add_todo('Walk the dog')
+todo_list.complete('')
+todo_list.see_list # => "fails with 'No text in todo!'"
+
+# 8 - returns 'not on the list' if todo is not on the list.
+
+todo_list = TodoList.new
+todo_list.add_todo('Walk the dog')
+todo_list.complete('Make lunch') # => returns "not on the list!
+
 ```
-```ruby
 
 _Encode each example as a test. You can add to the above list as you go._
 

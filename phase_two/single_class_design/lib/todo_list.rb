@@ -8,12 +8,14 @@ class TodoList
     @todo_list << "- " + todo
   end
 
-# returns @todo_list as a string in list format
-# if @todo_list is empty, returns a string telling user list is empty
-
   def see_list
    return "list is empty!" if @todo_list.empty?
    @todo_list.join("\n")
   end
 
+  def complete(todo)
+    fail 'No text in todo!' if todo.empty?
+    return "Not on the list!" unless @todo_list.include?("- " + todo) 
+    @todo_list.reject! {|listed_todo| listed_todo == "- " + todo }
+  end
 end
