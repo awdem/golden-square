@@ -2,65 +2,144 @@
 
 ## 1. Describe the Problem
 
-_Put or write the user story here. Add any clarifying notes you might have._
+As a user
+So that I can record my experiences
+I want to keep a regular diary
+
+As a user
+So that I can reflect on my experiences
+I want to read my past diary entries
+
+As a user
+So that I can reflect on my experiences in my busy day
+I want to select diary entries to read based on how much time I have and my reading speed
+
+As a user
+So that I can keep track of my tasks
+I want to keep a todo list along with my diary
+
+As a user
+So that I can keep track of my contacts
+I want to see a list of all of the mobile phone numbers in all my diary entries
 
 ## 2. Design the Class System
 
-_Consider diagramming out the classes and their relationships. Take care to
-focus on the details you see as important, not everything. The diagram below
-uses asciiflow.com but you could also use excalidraw.com, draw.io, or miro.com_
+key nouns and verbs:
 
-```
-┌────────────────────────────┐
-│ MusicPlayer                │
-│                            │
-│ - add(track)               │
-│ - all                      │
-│ - search_by_title(keyword) │
-│   => [tracks...]           │
-└───────────┬────────────────┘
-            │
-            │ owns a list of
-            ▼
-┌─────────────────────────┐
-│ Track(title, artist)    │
-│                         │
-│ - title                 │
-│ - artist                │
-│ - format                │
-│   => "TITLE by ARTIST"  │
-└─────────────────────────┘
-```
+diary, entry, reading speed, time, tasks, todo list, contacts, phone numbers
 
-_Also design the interface of each class in more detail._
+keep a regular diary, read my past diary entries, select diary entries to read based on time and reading speed, keep a todo list, list of all of the mobile phone numbers
+
+
+design: https://wireframe.cc/925t8L
 
 ```ruby
-class MusicLibrary
+class Diary
   def initialize
     # ...
   end
 
-  def add(track) # track is an instance of Track
-    # Track gets added to the library
-    # Returns nothing
+  def see_entry_list
+    # returns list of entries
   end
 
-  def all
-    # Returns a list of track objects
+  def add_entry(entry) # entry is an instance of Entry
+    # adds entry to list of entries
+    # returns nothing
+    # fails is entry is already on list
   end
-  
-  def search_by_title(keyword) # keyword is a string
-    # Returns a list of tracks with titles that include the keyword
+
+  def read_entry(entry) # entry is an instance of Entry
+    # returns contents of entry on list
+    # fails if entry is not on list
+  end
+
+  def find_best_entry(wpm, minutes) # wpm is an integer representing reading rate, minutes is an integer representing available time
+  # returns longest entry that can be read in the available time
+  # fails if no entry can be read in the available time
   end
 end
 
-class Track
-  def initialize(title, artist) # title and artist are both strings
+class Entry
+  def initialize(title, contents) # title is a string, contents is a string.
+    @title = title
+    @contents = contents
   end
 
-  def format
-    # Returns a string of the form "TITLE by ARTIST"
+  def get_title
+    # returns title
   end
+
+  def get_contents
+    # returns contents
+  end
+
+  def reading_time(wpm) # wpm is an integer representing reading rate
+    # returns estimated reading time as an integer
+  end
+
+  def word_count
+    # returns number of words in contents as an integer
+  end
+end
+
+class ContactList
+  def initialize 
+    # ...
+  end
+
+  def scan_diary_for_contacts(diary) # diary is an instance of the Diary class
+    # scan diary entries for phone numbers and add thems to a list
+    # returns nothing
+    # fails if no entries/no contacts found
+  end
+
+  def list
+    # returns the list of current contacts
+  end
+end
+
+class Todo
+  def initialize(task) # task is a string representing an incomplete task
+    # code
+  end
+
+  def get_task
+    # returns task
+  end
+
+  def mark_complete
+    # marks an incomplete task as complete
+    # fails if task is already complete
+  end
+
+
+  def done?
+    # check if a task is complete
+    # returns true if it is complete, else false
+  end
+end
+
+class TodoList
+  def initialize
+    # ..
+  end
+
+  def see_incomplete
+    # returns list of incomplete tasks
+    # fails if no incomplete tasks
+  end
+
+  def see_complete
+    # returns list of complete tasks
+    # fails is no complete tasks
+  end
+
+  def see_all
+    # shows list of all tasks and their status
+  end
+
+
 end
 ```
 
@@ -70,15 +149,9 @@ _Create examples of the classes being used together in different situations and
 combinations that reflect the ways in which the system will be used._
 
 ```ruby
-# EXAMPLE
 
-# Gets all tracks
-library = MusicLibrary.new
-track_1 = Track.new("Carte Blanche", "Veracocha")
-track_2 = Track.new("Synaesthesia", "The Thrillseekers")
-library.add(track_1)
-library.add(track_2)
-library.all # => [track_1, track_2]
+
+
 ```
 
 ## 4. Create Examples as Unit Tests
@@ -87,11 +160,8 @@ _Create examples, where appropriate, of the behaviour of each relevant class at
 a more granular level of detail._
 
 ```ruby
-# EXAMPLE
 
-# Constructs a track
-track = Track.new("Carte Blanche", "Veracocha")
-track.title # => "Carte Blanche"
+
 ```
 
 _Encode each example as a test. You can add to the above list as you go._

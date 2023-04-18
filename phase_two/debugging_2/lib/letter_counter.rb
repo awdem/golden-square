@@ -29,6 +29,9 @@
 # Intended output:
 # [2, "i"]
 
+
+### visibility code: 
+
 # class LetterCounter
 #   def initialize(text)
 #     @text = text
