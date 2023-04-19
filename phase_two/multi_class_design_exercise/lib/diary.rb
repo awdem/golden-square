@@ -20,7 +20,7 @@ class Diary
   end
 
   def find_best_entry(wpm, minutes)
-    self.check__reading_time(wpm, minutes) 
+    check__reading_time(wpm, minutes) 
     fail 'No valid entry' if @best_entries.empty?
     @best_entries.max_by(&:word_count).get_contents
   end
