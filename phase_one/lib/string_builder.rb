@@ -1,4 +1,3 @@
-
 class StringBuilder
     def initialize
       @str = ""

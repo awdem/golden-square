@@ -110,7 +110,7 @@ RSpec.describe "Diary integration" do
     end
 
     context "when there are no phone numbers in the diary" do
-     xit "fails" do
+     it "fails" do
         diary = Diary.new
         entry1 = Entry.new("title1", "contents1")
         contact_list = ContactList.new

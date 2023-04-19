@@ -28,7 +28,7 @@ class Diary
   private
   
   def check__reading_time(wpm, minutes)
-    @best_entries = 0
+    @best_entries = []
     @entries.each do |entry|
       next unless entry.reading_time(wpm) <= minutes
         @best_entries << entry

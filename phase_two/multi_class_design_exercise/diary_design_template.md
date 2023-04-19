@@ -198,11 +198,11 @@ combinations that reflect the ways in which the system will be used._
 
 # 6 -  fails if no contacts found
 
-diary = Diary.new
-entry1 = Entry.new("title1", "contents1")
-contact_list = ContactList.new
-diary.add(entry1)
-contact_list.scan_diary_for_contacts(diary) => "fails with 'No new contacts found."
+# diary = Diary.new
+# entry1 = Entry.new("title1", "contents1")
+# contact_list = ContactList.new
+# diary.add(entry1)
+# contact_list.scan_diary_for_contacts(diary) => "fails with 'No new contacts found."
 
 # 7 - adds todos to todo list
 
