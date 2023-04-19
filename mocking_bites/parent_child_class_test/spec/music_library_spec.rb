@@ -8,23 +8,25 @@ RSpec.describe MusicLibrary do
 
   it "adds tracks to a library" do
     music_library = MusicLibrary.new
-    track1 = double(:track)
-    track2 = double(:track)
-    music_library.add(track1)
-    music_library.add(track2)
+    fake_track1 = double(:track)
+    fake_track2 = double(:track)
+    music_library.add(fake_track1)
+    music_library.add(fake_track2)
 
-    expect(music_library.all).to eq [track1, track2]
+    expect(music_library.all).to eq [fake_track1, fake_track2]
   end
 
   describe '#search' do
     context "when tracks match keyword" do
       it "returns them as a list" do
         music_library = MusicLibrary.new
-        track1 = double(:track, matches?: true)
-        music_library.add(track1)
-        result = music_library.search("test")
+        fake_track1 = double(:track, matches?: true)
+        fake_track2 = double(:track, matches?: false)
+        music_library.add(fake_track1)
+        music_library.add(fake_track2)
+        result = music_library.search("keyword")
 
-        expect(result).to eq [track1]
+        expect(result).to eq [fake_track1]
       end
     end
   end
