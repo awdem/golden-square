@@ -13,10 +13,10 @@ class Entry
   end
 
   def reading_time(wpm) # wpm is an integer representing reading rate
-    # returns estimated reading time as an integer
+    return (word_count / wpm.to_f).ceil
   end
 
   def word_count
-    # returns number of words in contents as an integer
+    @contents.split(" ").size
   end
 end

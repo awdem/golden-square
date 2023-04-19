@@ -1,6 +1,7 @@
 class Diary
   def initialize
     @entries = []
+    @best_entries = []
   end
 
   def see_entry_list
@@ -18,8 +19,20 @@ class Diary
     # fails if entry is not on list
   end
 
-  def find_best_entry(wpm, minutes) # wpm is an integer representing reading rate, minutes is an integer representing available time
-  # returns longest entry that can be read in the available time
-  # fails if no entry can be read in the available time
+  def find_best_entry(wpm, minutes)
+    self.check__reading_time(wpm, minutes) 
+    fail 'No valid entry' if @best_entries.empty?
+    @best_entries.max_by(&:word_count).get_contents
   end
+
+  private
+  
+  def check__reading_time(wpm, minutes)
+    @best_entries = 0
+    @entries.each do |entry|
+      next unless entry.reading_time(wpm) <= minutes
+        @best_entries << entry
+    end  
+  end
+
 end

@@ -33,6 +33,46 @@ RSpec.describe "Diary integration" do
         expect{ diary.read(entry2) }.to raise_error "Invalid Entry"
       end
     end
+
+    describe "finding best entry " do
+      context "given one entry that can be read in time"
+        it "returns the contents of that entry" do
+          diary = Diary.new
+          entry1 = Entry.new("title1", "one two three")
+          diary.add(entry1)
+          expect(diary.find_best_entry(3, 1)). to eq "one two three"
+        end
+
+      context "with two entries, only one can be read in time"
+        it "returns the entry that can be read" do
+          diary = Diary.new
+          entry1 = Entry.new("title1", "one two three")
+          entry2 = Entry.new("title1", "one two three four")
+          diary.add(entry1)
+          diary.add(entry2)
+          expect(diary.find_best_entry(3, 1)). to eq "one two three"
+        end
+
+        context "with multiple entries of different length, both can be read in time"
+        it "returns the longest entry that can be read" do
+          diary = Diary.new
+          entry1 = Entry.new("title1", "one two three")
+          entry2 = Entry.new("title2", "one two three four")
+          entry3 = Entry.new("title3", "one two")
+          diary.add(entry1)
+          diary.add(entry2)
+          diary.add(entry3)
+          expect(diary.find_best_entry(5, 1)). to eq "one two three four"
+        end
+
+      context "with no entry that can be read in time"
+        it "fails" do
+          diary = Diary.new
+          entry1 = Entry.new("title1", "one two three")
+          diary.add(entry1)
+          expect{diary.find_best_entry(2, 1)}. to raise_error 'No valid entry'
+        end
+      end
   end
 
   describe "Contact List Behaviour" do
@@ -69,7 +109,7 @@ RSpec.describe "Diary integration" do
       end
     end
 
-    context "when there no phone numbers in the diary" do
+    context "when there are no phone numbers in the diary" do
      xit "fails" do
         diary = Diary.new
         entry1 = Entry.new("title1", "contents1")
