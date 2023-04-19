@@ -152,49 +152,49 @@ combinations that reflect the ways in which the system will be used._
 
 # 1 - can create diary entries, add them to the diary, and list them
 
-diary = Diary.new
-entry1 = Entry.new("title1", "contents1")
-entry2 = Entry.new("title2", "contents2")
-diary.add(entry1)
-diary.add(entry2)
-diary.see_entry_list => [entry1, entry2]
+# diary = Diary.new
+# entry1 = Entry.new("title1", "contents1")
+# entry2 = Entry.new("title2", "contents2")
+# diary.add(entry1)
+# diary.add(entry2)
+# diary.see_entry_list => [entry1, entry2]
 
 
 # 2 - can read specific entries
 
-diary = Diary.new
-entry1 = Entry.new("title1", "contents1")
-entry2 = Entry.new("title2", "contents2")
-diary.add(entry1)
-diary.add(entry2)
-dairy.read(entry1) => "contents1"
+# diary = Diary.new
+# entry1 = Entry.new("title1", "contents1")
+# entry2 = Entry.new("title2", "contents2")
+# diary.add(entry1)
+# diary.add(entry2)
+# dairy.read(entry1) => "contents1"
 
 # 3 - fails to read non-existent entries
 
-diary = Diary.new
-dairy.read(entry) => "fails with 'Invalid Entry'"
+# diary = Diary.new
+# dairy.read(entry) => "fails with 'Invalid Entry'"
 
 # 4 - scans entries for contacts and adds them to a list
 
-diary = Diary.new
-entry1 = Entry.new("title1", "George is 09000000001")
-entry2 = Entry.new("title2", "Pete is 09000000007")
-contact_list = ContactList.new
-diary.add(entry1)
-diary.add(entry2)
-contact_list.scan_diary_for_contacts(diary)
-contact_list.list => ['09000000001', '09000000007']
+# diary = Diary.new
+# entry1 = Entry.new("title1", "George is 09000000001")
+# entry2 = Entry.new("title2", "Pete is 09000000007")
+# contact_list = ContactList.new
+# diary.add(entry1)
+# diary.add(entry2)
+# contact_list.scan_diary_for_contacts(diary)
+# contact_list.list => ['09000000001', '09000000007']
 
 # 5 skips duplicates
 
-diary = Diary.new
-entry1 = Entry.new("title1", "George is 09000000001")
-entry2 = Entry.new("title2", "Pete is 09000000001")
-contact_list = ContactList.new
-diary.add(entry1)
-diary.add(entry2)
-contact_list.scan_diary_for_contacts(diary)
-contact_list.list => ['09000000001']
+# diary = Diary.new
+# entry1 = Entry.new("title1", "George is 09000000001")
+# entry2 = Entry.new("title2", "Pete is 09000000001")
+# contact_list = ContactList.new
+# diary.add(entry1)
+# diary.add(entry2)
+# contact_list.scan_diary_for_contacts(diary)
+# contact_list.list => ['09000000001']
 
 # 6 -  fails if no contacts found
 
@@ -206,34 +206,34 @@ contact_list.scan_diary_for_contacts(diary) => "fails with 'No new contacts foun
 
 # 7 - adds todos to todo list
 
-todo_list = TodoList.new
-todo1 = Todo.new("task1")
-todo2 = Todo.new("task2")
-todo_list.add(todo1)
-todo_list.add(todo2)
-todo_list.see_incomplete => [todo1, todo2]
+# todo_list = TodoList.new
+# todo1 = Todo.new("task1")
+# todo2 = Todo.new("task2")
+# todo_list.add(todo1)
+# todo_list.add(todo2)
+# todo_list.see_incomplete => [todo1, todo2]
 
 # 8 - shows completed todos as complete
 
-todo_list = TodoList.new
-todo1 = Todo.new("task1")
-todo2 = Todo.new("task2")
-todo_list.add(todo1)
-todo_list.add(todo2)
-todo2.mark_complete
-todo_list.see_incomplete => [todo1]
-todo_list.see_complete => [todo2]
+# todo_list = TodoList.new
+# todo1 = Todo.new("task1")
+# todo2 = Todo.new("task2")
+# todo_list.add(todo1)
+# todo_list.add(todo2)
+# todo2.mark_complete!
+# todo_list.see_incomplete => [todo1]
+# todo_list.see_complete => [todo2]
 
 
 # 9 - shows mixed list of todos
 
-todo_list = TodoList.new
-todo1 = Todo.new("task1")
-todo2 = Todo.new("task2")
-todo_list.add(todo1)
-todo_list.add(todo2)
-todo2.mark_complete
-todo_list.see_all => [{incomplete: todo1}, {complete: todo2}]
+# todo_list = TodoList.new
+# todo1 = Todo.new("task1")
+# todo2 = Todo.new("task2")
+# todo_list.add(todo1)
+# todo_list.add(todo2)
+# todo2.mark_complete!
+# todo_list.see_all => [{incomplete: todo1}, {complete: todo2}]
 
 
 
@@ -250,16 +250,16 @@ a more granular level of detail._
 
 # 1 - constructs
 
-diary = Diary.new
-diary.see_entry_list => []
+# diary = Diary.new
+# diary.see_entry_list => []
 
 ## Entry
 
 # 1 - constructs 
 
-entry = Entry.new( "title", "contents")
-entry.get_title => "title"
-entry.get_contents => "contents"
+# entry = Entry.new( "title", "contents")
+# entry.get_title => "title"
+# entry.get_contents => "contents"
 
 # 2 - returns the word count of an entry
 
@@ -269,8 +269,8 @@ entry.get_contents => "contents"
 
 # 1 - constructs
 
-contact_list = ContactList.new
-contact_list.list => []
+# contact_list = ContactList.new
+# contact_list.list => []
 
 ## TodoList
 
