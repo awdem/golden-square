@@ -12,6 +12,7 @@ RSpec.describe "doubles" do
   it "sets up a double with methods" do
     # Set up your doubles here
     fake_object = double :fake_object, speak: "Meow"
+    # alternative: fake_object = double :fake_object, speak: "Meow", count_ears: 2, count_legs: 4
 
     allow(fake_object).to receive(:count_ears).and_return(2)
     allow(fake_object).to receive(:count_legs).and_return(4)
@@ -49,9 +50,7 @@ RSpec.describe "doubles" do
   it "creates a double for a specific case" do
     fake_diary = double :diary, add: nil
     # Set up this double to pass the tests below
-    allow(fake_diary).to receive(:add).with(double :diary_entry)
     allow(fake_diary).to receive(:count_entries).and_return(2)
-  
 
     # Don't edit below
     fake_diary.add(double :diary_entry)
