@@ -6,13 +6,19 @@ class InteractiveCalculator
  def run
   @terminal.puts "Hello. I will subtract two numbers."
   @terminal.puts "Please enter a number"
-  num1 = @terminal.gets.to_i
+  num1 = get_number
   @terminal.puts "Please enter another number"
-  num2 = @terminal.gets.to_i
+  num2 = get_number
   @terminal.puts "Here is your result:"
   @terminal.puts "#{num1} - #{num2} = #{num1 - num2}"
 end
 
+private 
+
+def get_number
+  number = @terminal.gets
+  number =~ /\D/ ? (fail "Not a number!") : number.to_i
+end
 end
 
 # Example Call
